@@ -1,6 +1,7 @@
 {
   "hosting": {
-    "public": "public",
+    "target": "logseq-ca240",
+    "public": "www",
     "ignore": [
       "firebase.json",
       "**/.*",
@@ -9,7 +10,7 @@
     "rewrites": [
       {
         "source": "**",
-        "destination": "/index.html"
+        "destination": "www/index.html"
       }
     ]
   }
