@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "target": "xdxd.oao.com",
+    "target": "logseq-ca240",
     "public": "www",
     "ignore": [
       "firebase.json",

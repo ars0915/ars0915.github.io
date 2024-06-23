@@ -5,7 +5,7 @@
   "targets": {
     "logseq-ca240": {
       "hosting": {
-        "xdxd.oao.com": [
+        "logseq-ca240": [
           "logseq-ca240"
         ]
       }
