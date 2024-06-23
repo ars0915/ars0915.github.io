@@ -63,7 +63,7 @@
 
  ;; Enable journals.
  ;; Default value: true
- :feature/enable-journals? true
+ ;; :feature/enable-journals? true
 
  ;; Enable flashcards.
  ;; Default value: true
@@ -136,11 +136,11 @@
 
  ;; Set the default location for storing notes.
  ;; Default value: "pages"
-:pages-directory "pages"
+ ;; :pages-directory "pages"
 
  ;; Set the default location for storing journals.
  ;; Default value: "journals"
-:journals-directory "journals"
+ ;; :journals-directory "journals"
 
  ;; Set the default location for storing whiteboards.
  ;; Default value: "whiteboards"
@@ -421,5 +421,4 @@
  :file/name-format :triple-lowbar
  :graph/settings {:journal? true
  :builtin-pages? true}
- :publishing/all-pages-public? true
- :editor/preferred-pasting-file? true}
+ :publishing/all-pages-public? true}
