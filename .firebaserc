@@ -1,5 +1,16 @@
 {
   "projects": {
     "default": "logseq-ca240"
-  }
+  },
+  "targets": {
+    "logseq-ca240": {
+      "hosting": {
+        "xdxd.oao.com": [
+          "logseq-ca240"
+        ]
+      }
+    }
+  },
+  "etags": {},
+  "dataconnectEmulatorConfig": {}
 }
