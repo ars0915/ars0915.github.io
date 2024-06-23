@@ -1,26 +1,55 @@
+# This is a basic workflow to help you get started with Actions
+name: Logseq Deploy
+
+# Controls when the workflow will run
 on:
   push:
     branches: [main]
 
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+  # A workflow run is made up of one or more jobs that can run sequentially or in parallel
+
 permissions:
-  contents: write
+    contents: write
+
 jobs:
-  test:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
     runs-on: ubuntu-latest
-    name: Publish Logseq graph
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - uses: actions/checkout@v4
-      - uses: logseq/publish-spa@v0.3.0
-      - name: Add a nojekyll file # to make sure asset paths are correctly identified
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      # The official action for publish SPA; currently not working well with empty content
+    #   - name: Logseq Publish
+    #     uses: logseq/publish-spa@v0.2.0
+    #     with:
+    #       theme-mode: light
+
+      # Publish action by other contributor
+      - name: Logseq Publish
+        uses: pengx17/logseq-publish@main
+        with:
+          version: latest
+
+      - name: add a nojekyll file
         run: touch $GITHUB_WORKSPACE/www/.nojekyll
-      - name: Deploy 🚀
+
+      - name: Deploy to GitHub pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: www
-    - name: deploy to firebase hosting live channel
+          branch: gh-pages # The branch the action should deploy to.
+          folder: www # The folder the action should deploy.
+          clean: true
+
+      - name: deploy to firebase hosting live channel
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
-            repoToken: "${{ secrets.GITHUB_TOKEN }}"
-            firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT }}"
-            projectId: logseq-ca240
-            channelId: live
+          repoToken: "${{ secrets.GITHUB_TOKEN }}"
+          firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT }}"
+          projectId: logseq-ca240
+          channelId: live
